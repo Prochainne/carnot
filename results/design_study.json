@@ -1,0 +1,115 @@
+{
+  "site": {
+    "brine_salinity_g_kg": 72.41379310344827,
+    "brine_per_product": 1.3809523809523812,
+    "osmotic_difference_bar": 57.62746722771781,
+    "c_brine_mol_m3": 1298.6674655794502,
+    "c_feed_mol_m3": 17.070853802947898
+  },
+  "breakeven": {
+    "cta_compact": 0.44367640248394336,
+    "cta_high_recovery": 0.560367361401428,
+    "tfc_compact": 0.32961520847689657,
+    "tfc_high_recovery": 0.38267687793237387
+  },
+  "waterfall": {
+    "cta_compact": {
+      "reversible_ceiling": 0.7888009790536235,
+      "ideal_constant_pressure": 0.6699637329205853,
+      "ideal_constant_pressure_dP_bar": 38.27754913987052,
+      "hydraulic_at_design": 0.4441661588513383,
+      "after_turbine": 0.37754123502363757,
+      "loss_px": 0.06288954932426148,
+      "loss_draw_pump": 0.03610333022097729,
+      "loss_feed_pump": 0.032053970103033486,
+      "loss_pretreatment": 0.06539009901018832,
+      "net": 0.18110428636517706,
+      "net_share_of_ceiling": 0.22959439855470237
+    },
+    "cta_high_recovery": {
+      "reversible_ceiling": 1.4404079659596787,
+      "ideal_constant_pressure": 1.0633009702704308,
+      "ideal_constant_pressure_dP_bar": 26.81030359757843,
+      "hydraulic_at_design": 0.9220371344086181,
+      "after_turbine": 0.7837315642473254,
+      "loss_px": 0.05447900417591172,
+      "loss_draw_pump": 0.03610333022097729,
+      "loss_feed_pump": 0.07166907072023504,
+      "loss_pretreatment": 0.14620490426927948,
+      "net": 0.47527525486092187,
+      "net_share_of_ceiling": 0.3299587797990741
+    },
+    "tfc_compact": {
+      "reversible_ceiling": 0.9735482684808697,
+      "ideal_constant_pressure": 0.795601247436386,
+      "ideal_constant_pressure_dP_bar": 34.63339155919637,
+      "hydraulic_at_design": 0.44119809827885,
+      "after_turbine": 0.3750183835370225,
+      "loss_px": 0.055303883566136296,
+      "loss_draw_pump": 0.03610333022097729,
+      "loss_feed_pump": 0.041832518838973355,
+      "loss_pretreatment": 0.08533833843150564,
+      "net": 0.15644031247942997,
+      "net_share_of_ceiling": 0.16069086407347868
+    },
+    "tfc_high_recovery": {
+      "reversible_ceiling": 1.4962102282308893,
+      "ideal_constant_pressure": 1.0910478918872955,
+      "ideal_constant_pressure_dP_bar": 25.994069817855728,
+      "hydraulic_at_design": 0.7652289409059921,
+      "after_turbine": 0.6504445997700933,
+      "loss_px": 0.048003158235506875,
+      "loss_draw_pump": 0.03610333022097729,
+      "loss_feed_pump": 0.0758048093308542,
+      "loss_pretreatment": 0.1546418110349426,
+      "net": 0.33589149094781223,
+      "net_share_of_ceiling": 0.22449485012876064
+    }
+  },
+  "abu_dhabi": {
+    "product_m3_day": 909200.0,
+    "brine_m3_day": 1255561.9047619049,
+    "ro_power_MW": 113.65,
+    "emirate_effluent_m3_day": 1000000.0
+  },
+  "effluent_value": {
+    "cta_compact": {
+      "sigma_feed": 243.206854970536,
+      "best_kWh_per_m3_effluent": 0.27696137772324475,
+      "phi": 0.4733464336378662,
+      "dP_bar": 27.85744839499952,
+      "at_design_kWh_per_m3_effluent": 0.276959798358708,
+      "share_of_desalinating_1_m3": 0.09232045924108158
+    },
+    "cta_high_recovery": {
+      "sigma_feed": 507.32582877094075,
+      "best_kWh_per_m3_effluent": 0.42304876077144304,
+      "phi": 0.4770528747128159,
+      "dP_bar": 33.77250986434233,
+      "at_design_kWh_per_m3_effluent": 0.3250747690279679,
+      "share_of_desalinating_1_m3": 0.141016253590481
+    },
+    "tfc_compact": {
+      "sigma_feed": 62.57250045954571,
+      "best_kWh_per_m3_effluent": 0.1833178574086647,
+      "phi": 0.6184110041781178,
+      "dP_bar": 24.496234634971913,
+      "at_design_kWh_per_m3_effluent": 0.18331773896089187,
+      "share_of_desalinating_1_m3": 0.06110595246955489
+    },
+    "tfc_high_recovery": {
+      "sigma_feed": 111.61840605771498,
+      "best_kWh_per_m3_effluent": 0.26435142397162165,
+      "phi": 0.5912142939905927,
+      "dP_bar": 26.90979476167005,
+      "at_design_kWh_per_m3_effluent": 0.21720612860121952,
+      "share_of_desalinating_1_m3": 0.08811714132387388
+    }
+  },
+  "seawater_feed": {
+    "osmotic_difference_bar": 26.389264117478852,
+    "best_fraction": -0.014098059012918482,
+    "best_fraction_no_pretreatment": -0.014098059012918482
+  },
+  "runtime_s": 419.0904059410095
+}

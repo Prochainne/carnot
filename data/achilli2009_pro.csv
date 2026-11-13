@@ -1,0 +1,10 @@
+# Measured PRO water flux at dP = 970 kPa, flat-sheet CTA membrane, 24-25 C.
+# Source: Achilli, Cath & Childress (2009), J. Membr. Sci. 343, 42-52 (dissertation ch. 4, text and Table 4.6).
+# DI-water-feed rows are the tabulated values. The 5 g/L-feed rows are the lower ends of the flux ranges
+# quoted in the text ("between 1.8e-6 and 2.8e-6 m/s ... depending on feed concentration"); we attribute
+# them to the most saline feed tested (5 g/L NaCl).
+draw_g_per_L,feed_g_per_L,dP_kPa,Jw_1e-6_m_per_s,power_density_W_m2,note
+35,0,970,2.81,2.73,Table 4.6
+60,0,970,5.21,5.06,Table 4.6
+35,5,970,1.8,,lower end of range in text
+60,5,970,3.6,,lower end of range in text

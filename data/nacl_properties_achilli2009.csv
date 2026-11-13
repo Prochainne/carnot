@@ -1,0 +1,9 @@
+# NaCl solution properties at 25 C. Source: Achilli, Cath & Childress (2009), J. Membr. Sci. 343, 42-52, Table 1
+# (values as printed in A. Achilli's PhD dissertation, Univ. Nevada Reno, 2009, Table 4.1; osmotic pressures from OLI Stream Analyzer)
+nacl_g_per_L,osmotic_pressure_kPa,viscosity_mPa_s,density_g_per_L,diffusivity_1e-9_m2_per_s
+0,0,0.892,997,1.51
+2.5,189,0.895,999,1.497
+5,380,0.898,1000,1.485
+20,1550,0.918,1011,1.472
+35,2763,0.939,1021,1.490
+60,4882,0.976,1037,1.556

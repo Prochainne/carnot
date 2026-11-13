@@ -1,0 +1,311 @@
+{
+  "osmotic_pressure": {
+    "max_abs_err_pct_pitzer_20to60gL": 1.3747879847019862,
+    "max_abs_err_pct_vant_hoff_20to60gL": 9.462355857367498,
+    "max_abs_err_kPa_pitzer_all": 21.309213762880745
+  },
+  "thermodynamic_limits": {
+    "reversible_kWh_m3_this_work": 0.2559837331064685,
+    "reversible_feed_fraction": 0.611,
+    "reversible_kWh_m3_Lin2014": 0.256,
+    "counter_current_numerical": 0.19159011893463626,
+    "counter_current_analytical": 0.19159012408311693,
+    "counter_current_kWh_m3_Lin2014": 0.192
+  },
+  "achilli": [
+    {
+      "draw_g_per_L": 35,
+      "feed_g_per_L": 0,
+      "Jw_1e-6_m_per_s": 2.81,
+      "Jw_model_1e-6_m_per_s": 2.7354643677037234,
+      "err_pct": -2.6525136048497044,
+      "power_density_W_m2": 2.73,
+      "power_density_model_W_m2": 2.6534004366726114,
+      "note": "Table 4.6"
+    },
+    {
+      "draw_g_per_L": 60,
+      "feed_g_per_L": 0,
+      "Jw_1e-6_m_per_s": 5.21,
+      "Jw_model_1e-6_m_per_s": 5.261444030099354,
+      "err_pct": 0.9874094068973882,
+      "power_density_W_m2": 5.06,
+      "power_density_model_W_m2": 5.103600709196373,
+      "note": "Table 4.6"
+    },
+    {
+      "draw_g_per_L": 35,
+      "feed_g_per_L": 5,
+      "Jw_1e-6_m_per_s": 1.8,
+      "Jw_model_1e-6_m_per_s": 1.5442609799677123,
+      "err_pct": -14.207723335127099,
+      "power_density_W_m2": NaN,
+      "power_density_model_W_m2": 1.4979331505686808,
+      "note": "lower end of range in text"
+    },
+    {
+      "draw_g_per_L": 60,
+      "feed_g_per_L": 5,
+      "Jw_1e-6_m_per_s": 3.6,
+      "Jw_model_1e-6_m_per_s": 3.208748723677911,
+      "err_pct": -10.868091008946923,
+      "power_density_W_m2": NaN,
+      "power_density_model_W_m2": 3.1124862619675735,
+      "note": "lower end of range in text"
+    }
+  ],
+  "straub": {
+    "calibration_set": "0.6 M and 2 M draw (24 points)",
+    "test_set": "1 M and 3 M draw (26 points)",
+    "fitted_on_calibration": {
+      "A_LMH_per_bar": 3.868744138828245,
+      "B_LMH": 1.1206685748889451,
+      "S_um": 485.07633149349704
+    },
+    "calibration_stats": {
+      "n": 24,
+      "rmse_LMH": 2.4990596827020632,
+      "mean_abs_err_LMH": 2.0475904880304827,
+      "bias_LMH": -0.08484480849969978,
+      "mean_measured_LMH": 31.39166666666667
+    },
+    "test_stats": {
+      "n": 26,
+      "rmse_LMH": 3.287228134763058,
+      "mean_abs_err_LMH": 2.834914259360853,
+      "bias_LMH": -0.24360436676878144,
+      "mean_measured_LMH": 37.13461538461538
+    },
+    "test_stats_by_draw": {
+      "1.0": {
+        "n": 12,
+        "rmse_LMH": 2.805357655232017,
+        "mean_abs_err_LMH": 2.2928337632016227,
+        "bias_LMH": 1.8405286748673326,
+        "mean_measured_LMH": 19.975000000000005
+      },
+      "3.0": {
+        "n": 14,
+        "rmse_LMH": 3.6499727021894737,
+        "mean_abs_err_LMH": 3.299554684640195,
+        "bias_LMH": -2.0300041167425933,
+        "mean_measured_LMH": 51.842857142857135
+      }
+    },
+    "fitted_on_all": {
+      "A_LMH_per_bar": 2.721648224748523,
+      "B_LMH": 0.9948745774590645,
+      "S_um": 459.224699809222
+    },
+    "fitted_on_all_95pct_factor": {
+      "A_LMH_per_bar": 1.2566671413726567,
+      "B_LMH": 1.5974743190651286,
+      "S_um": 1.1010731645689324
+    },
+    "all_stats": {
+      "n": 50,
+      "rmse_LMH": 2.660531743822727,
+      "mean_abs_err_LMH": 2.2028342178409575,
+      "bias_LMH": -0.10483914522839648,
+      "mean_measured_LMH": 34.378
+    },
+    "replicate_rms_difference_LMH": 3.8684880767555687
+  },
+  "fukuoka": {
+    "reported_net_kW": 110.0,
+    "reversible_ceiling_kW": 444.33190493792284,
+    "reported_fraction_of_ceiling": 0.2475626863107388,
+    "model": [
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 10,
+        "dP_bar": 15.508223050065064,
+        "net_kW": -63.72521134723343,
+        "gross_kW": 14.8506485724732,
+        "power_density_gross_W_m2": 4.193124302815963,
+        "membrane_area_m2": 4166.666666666667
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 25,
+        "dP_bar": 25.062419187523737,
+        "net_kW": -40.28210358066778,
+        "gross_kW": 44.798519504519966,
+        "power_density_gross_W_m2": 5.059597496981079,
+        "membrane_area_m2": 10416.666666666666
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 50,
+        "dP_bar": 27.656079686388775,
+        "net_kW": -5.686307100037447,
+        "gross_kW": 81.1601523814364,
+        "power_density_gross_W_m2": 4.5831615462458215,
+        "membrane_area_m2": 20833.333333333332
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 75,
+        "dP_bar": 28.090907844084633,
+        "net_kW": 22.027668533060037,
+        "gross_kW": 109.17017115022006,
+        "power_density_gross_W_m2": 4.109935855067109,
+        "membrane_area_m2": 31250.0
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 100,
+        "dP_bar": 28.061073573995436,
+        "net_kW": 44.686425317345936,
+        "gross_kW": 131.80861593144962,
+        "power_density_gross_W_m2": 3.7216550380644597,
+        "membrane_area_m2": 41666.666666666664
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 150,
+        "dP_bar": 27.672437789873687,
+        "net_kW": 79.63228439975789,
+        "gross_kW": 166.489880934258,
+        "power_density_gross_W_m2": 3.1339271705272096,
+        "membrane_area_m2": 62500.0
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 200,
+        "dP_bar": 27.299024506215567,
+        "net_kW": 105.28983179931741,
+        "gross_kW": 191.893198157035,
+        "power_density_gross_W_m2": 2.709080444569906,
+        "membrane_area_m2": 83333.33333333333
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 300,
+        "dP_bar": 27.531104902895624,
+        "net_kW": 139.22668046702216,
+        "gross_kW": 225.98805363075832,
+        "power_density_gross_W_m2": 2.1269463871130196,
+        "membrane_area_m2": 125000.0
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 600,
+        "dP_bar": 30.490615928409603,
+        "net_kW": 173.90261763865834,
+        "gross_kW": 262.67890843959077,
+        "power_density_gross_W_m2": 1.2361360397157217,
+        "membrane_area_m2": 250000.0
+      },
+      {
+        "membrane": "CTA hollow fibre (commercial)",
+        "sigma_m2_per_m3h": 1500,
+        "dP_bar": 31.788038742505872,
+        "net_kW": 180.02395647501703,
+        "gross_kW": 269.6835689086404,
+        "power_density_gross_W_m2": 0.5076396591221466,
+        "membrane_area_m2": 625000.0
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 10,
+        "dP_bar": 25.48126349886817,
+        "net_kW": -29.832921044229142,
+        "gross_kW": 55.53286292831186,
+        "power_density_gross_W_m2": 15.679867179758643,
+        "membrane_area_m2": 4166.666666666667
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 25,
+        "dP_bar": 26.172892243426734,
+        "net_kW": 25.02522962393048,
+        "gross_kW": 110.86189373301734,
+        "power_density_gross_W_m2": 12.52087270396431,
+        "membrane_area_m2": 10416.666666666666
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 50,
+        "dP_bar": 25.385332058926735,
+        "net_kW": 75.44192553246712,
+        "gross_kW": 160.74239670548369,
+        "power_density_gross_W_m2": 9.077217696309669,
+        "membrane_area_m2": 20833.333333333332
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 75,
+        "dP_bar": 25.453587054611827,
+        "net_kW": 100.82776701404445,
+        "gross_kW": 186.17470809153073,
+        "power_density_gross_W_m2": 7.008930186975276,
+        "membrane_area_m2": 31250.0
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 100,
+        "dP_bar": 26.007174447119528,
+        "net_kW": 114.05229028104054,
+        "gross_kW": 199.7761290930773,
+        "power_density_gross_W_m2": 5.640737762628065,
+        "membrane_area_m2": 41666.666666666664
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 150,
+        "dP_bar": 27.59782406790223,
+        "net_kW": 124.92540999331023,
+        "gross_kW": 211.7322074251609,
+        "power_density_gross_W_m2": 3.9855474338853827,
+        "membrane_area_m2": 62500.0
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 200,
+        "dP_bar": 28.22704257450302,
+        "net_kW": 125.33231802159827,
+        "gross_kW": 212.56750495957698,
+        "power_density_gross_W_m2": 3.0009530111940275,
+        "membrane_area_m2": 83333.33333333333
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 300,
+        "dP_bar": 28.22704257450302,
+        "net_kW": 125.33231802746057,
+        "gross_kW": 212.56750496543918,
+        "power_density_gross_W_m2": 2.0006353408511925,
+        "membrane_area_m2": 125000.0
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 600,
+        "dP_bar": 28.22704257450302,
+        "net_kW": 125.3323180757591,
+        "gross_kW": 212.56750501373773,
+        "power_density_gross_W_m2": 1.0003176706528834,
+        "membrane_area_m2": 250000.0
+      },
+      {
+        "membrane": "TFC flat sheet (lab, fitted)",
+        "sigma_m2_per_m3h": 1500,
+        "dP_bar": 28.22704257450302,
+        "net_kW": 125.33231807361811,
+        "gross_kW": 212.56750501159675,
+        "power_density_gross_W_m2": 0.40012706825712335,
+        "membrane_area_m2": 625000.0
+      }
+    ],
+    "CTA hollow fibre (commercial)": {
+      "sigma_matching_110kW": 213.8792150290752,
+      "area_matching_110kW_m2": 89116.339595448,
+      "net_kW_large_area": 180.02395647501703
+    },
+    "TFC flat sheet (lab, fitted)": {
+      "sigma_matching_110kW": 92.33943976802234,
+      "area_matching_110kW_m2": 38474.766570009306,
+      "net_kW_large_area": 125.33231807361811
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Plant-scale figures used in the report. See data/SOURCES.md for links.
+plant,quantity,value,unit,source
+Taweelah RO (Abu Dhabi),capacity,909200,m3/day,ACWA Power project page
+Taweelah RO (Abu Dhabi),specific energy,<3,kWh/m3,WaterWorld 2019 (EWEC / ACWA Power announcement)
+Fukuoka osmotic power plant,brine flow,10000,m3/day,Fukuoka District Waterworks Agency (2023)
+Fukuoka osmotic power plant,brine salt content,8,percent,Fukuoka District Waterworks Agency (2023)
+Fukuoka osmotic power plant,treated sewage flow,9200,m3/day,Fukuoka District Waterworks Agency (2023)
+Fukuoka osmotic power plant,net output,110,kW,Fukuoka District Waterworks Agency (2023)
+Fukuoka osmotic power plant,annual generation,880000,kWh/year,Fukuoka District Waterworks Agency (2023)
+Abu Dhabi emirate,wastewater treated,>1000000,m3/day,WAM (TAQA Water Solutions)
+Abu Dhabi emirate,treated effluent reused,about 80,percent,WAM (TAQA Water Solutions)
