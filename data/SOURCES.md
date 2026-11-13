@@ -27,9 +27,9 @@ Every number that enters the model from outside is listed here with where it cam
 | Fukuoka plant | 10,000 m3/day brine at about 8 %, 9,200 m3/day treated sewage, 110 kW net, 880,000 kWh/year | https://www.f-suiki.or.jp/wp-content/uploads/2023/10/5683f686954e8bd95ac993ef013f1ccb.pdf |
 | Abu Dhabi effluent | over 1 million m3/day treated, about 80 % reused, 100 % target | https://www.wam.ae/en/article/blywkjs-abu-dhabi-reuse-100-treated-water-2026-says-taqa |
 
-## Economics and fouling extensions (`scripts/s06_economics.py`, `scripts/s07_fouling.py`)
+## Costs and fouling, report sections 8 and 9 (`scripts/s06_economics.py`, `scripts/s07_fouling.py`)
 
-These are first estimates added after the report. The cost figures come from published summaries
+These are first estimates, added after the first draft of the report. The cost figures come from published summaries
 and should be checked against the full papers before they are relied on.
 
 | Parameter | Range (base) | Source |

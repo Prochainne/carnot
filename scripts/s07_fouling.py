@@ -16,7 +16,7 @@ A second part reruns the report's Monte Carlo (same 400 samples, same seed) with
 severity drawn from FOULING_RANGE and costs drawn from s06_economics.COSTS (about 5 minutes).
 
 Writes results/fouling.csv, results/fouling_monte_carlo.csv, results/fouling_monte_carlo.json
-and figures/fig11_fouling.png.
+and figures/fig12_fouling.png.
 """
 import json
 import time
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     axes[0].legend(title="Fouling acts on", fontsize=9, title_fontsize=9)
     fig.text(0.01, -0.04, "Illustrative fouling levels (time-averaged). Clean membrane at f = 0 matches the report.",
              color=INK2, fontsize=8)
-    savefig(fig, "fig11_fouling.png")
+    savefig(fig, "fig12_fouling.png")
 
     # Combined Monte Carlo: same physics samples as s04 (same seed), plus fouling and costs
     n_mc = 400

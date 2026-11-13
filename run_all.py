@@ -19,7 +19,7 @@ STEPS = [
     ["scripts/s04_uncertainty.py", "tfc", "high_recovery", N_MC],
     ["scripts/s04_uncertainty.py", "map"],
     ["scripts/s05_figures.py"],
-    # extensions beyond the report: they only add files, the report's outputs are unchanged
+    # costs and fouling (report sections 8 and 9): they only add files, earlier outputs are unchanged
     ["scripts/s06_economics.py"],
     ["scripts/s07_fouling.py"],
 ]

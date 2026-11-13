@@ -4,7 +4,7 @@ Extension to the report, not part of it: the report's numbers are energy only.
 Reads results/designs.json and the Monte Carlo files from s04_uncertainty.py; runs no
 new physics, so it takes seconds. Writes results/economics_designs.csv,
 results/economics_tornado.csv, results/economics_monte_carlo.csv, results/economics.json,
-figures/fig10_economics.png and figures/fig12_cost_tornado.png.
+figures/fig10_economics.png and figures/fig11_cost_tornado.png.
 
 Cost basis, per m3/day of desalinated product capacity:
     membrane capital  = area * membrane price / membrane share of PRO capital
@@ -119,7 +119,7 @@ if __name__ == "__main__":
     axes[1].set_yticklabels([])
     fig.text(0.01, -0.05, "Each bar: one cost input moved across its range, all others at base. "
              "Blue: the cheaper end; orange: the dearer end.", color=INK2, fontsize=8)
-    savefig(fig, "fig12_cost_tornado.png")
+    savefig(fig, "fig11_cost_tornado.png")
 
     # Monte Carlo: physics samples from s04 paired with independently sampled costs
     rng = np.random.default_rng(SEED + 6)
