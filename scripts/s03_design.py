@@ -88,7 +88,7 @@ if __name__ == "__main__":
                     "osmotic_difference_bar": DPI / BAR, "c_brine_mol_m3": SITE.c_brine,
                     "c_feed_mol_m3": SITE.c_feed}}
     designs = {}
-    with Pool(2) as pool:
+    with Pool() as pool:
         for key, df, compact, high in pool.map(area_sweep, list(MEMBRANES)):
             df.to_csv(f"results/area_sweep_{key}.csv", index=False)
             designs[key] = {"membrane": MEMBRANES[key].name, "compact": compact, "high_recovery": high,
@@ -179,7 +179,6 @@ if __name__ == "__main__":
     out["seawater_feed"] = {"osmotic_difference_bar": bulk_osmotic_difference(sw_site) / BAR,
                             "best_fraction": float(sw.fraction.max()),
                             "best_fraction_no_pretreatment": float(sw[sw.e_pre_feed == 0].fraction.max())}
-    out["runtime_s"] = time.time() - t0
     save_json("design_study.json", out)
     for k in designs:
         for n in ("compact", "high_recovery", "large_area"):

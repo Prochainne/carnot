@@ -27,6 +27,22 @@ Every number that enters the model from outside is listed here with where it cam
 | Fukuoka plant | 10,000 m3/day brine at about 8 %, 9,200 m3/day treated sewage, 110 kW net, 880,000 kWh/year | https://www.f-suiki.or.jp/wp-content/uploads/2023/10/5683f686954e8bd95ac993ef013f1ccb.pdf |
 | Abu Dhabi effluent | over 1 million m3/day treated, about 80 % reused, 100 % target | https://www.wam.ae/en/article/blywkjs-abu-dhabi-reuse-100-treated-water-2026-says-taqa |
 
+## Economics and fouling extensions (`scripts/s06_economics.py`, `scripts/s07_fouling.py`)
+
+These are first estimates added after the report. The cost figures come from published summaries
+and should be checked against the full papers before they are relied on.
+
+| Parameter | Range (base) | Source |
+|---|---|---|
+| Membrane price | US$5-30/m2 (10) | IRENA, Salinity gradient energy technology brief (2014): EUR 10-30/m2 today, 2-5 needed to compete, https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2014/Salinity_Energy_v4_WEB.pdf ; vendor quotes of US$9.2-12.3/m2 in a 2024 spiral-wound PRO cost study, https://www.sciencedirect.com/science/article/pii/S1944398624202423 |
+| Membrane share of PRO capital | 50-80 % (65) | IRENA (2014): membranes are 50-80 % of total capital |
+| Membrane life | 3-7 years (5) | 5 years in the 2024 study above; the range is our choice |
+| Effluent pretreatment capital | US$150-1000 per m3/day (400) | Order of magnitude only: about US$10 million for a 10,000 m3/day low-pressure membrane plant in 2013, https://dspace.lib.cranfield.ac.uk/server/api/core/bitstreams/f85b9f9c-fc67-4e29-bfb5-ab6a9998ead2/content ; larger plants and shared reuse infrastructure cost less. Weakest cost input. |
+| Discount rate, O&M, availability, plant life | 4-10 % (7), 2-4 %/yr (3), 85-95 % (90), 20 years | Our choice |
+| Solar comparison | US$0.0135/kWh | Al Dhafra PV bid tariff, Abu Dhabi Power Corporation (2020), https://www.wam.ae/en/article/hszra9cy-abu-dhabi-power-corporation-announces-worlds |
+| Published PRO cost check | US$0.44/kWh minimum for RO brine and wastewater | Chung, Banchik, Swaminathan & Lienhard, Desalination 408 (2017) 133-144, https://tethys-engineering.pnnl.gov/publications/present-future-economic-viability-stand-alone-pressure-retarded-osmosis |
+| Fouling severity | 0-40 % loss of water permeability, with and without a matching rise in the structural parameter | Our choice, illustrative. No PRO pilot data on Gulf effluent was found; bench forward-osmosis tests on treated wastewater report flux declines of roughly 0-25 %, which the range covers with margin. |
+
 ## Values we chose, not measured
 
 The membrane parameters of the lab thin-film composite (A 2.72, B 0.995, S 459) are our own fit to

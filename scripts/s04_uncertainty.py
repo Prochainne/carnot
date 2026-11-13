@@ -51,7 +51,7 @@ if __name__ == "__main__":
         e_grid = np.linspace(0.0, 0.6, 13)
         s_grid = [0.5, 1, 2, 3.5, 5, 7.5, 10, 15, 20, 30, 42]
         jobs = [("cta", float(e), float(s), r["sigma"], x0) for s in s_grid for e in e_grid]
-        with Pool(2) as pool:
+        with Pool() as pool:
             pd.DataFrame(pool.map(map_worker, jobs, chunksize=4)).to_csv("results/breakeven_map_cta_compact.csv", index=False)
     else:
         key, name = sys.argv[1], sys.argv[2]
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         jobs = []
         for p, (lo, _, hi, _) in RANGES.items():
             jobs += [(key, {p: lo}, sigma, x0), (key, {p: hi}, sigma, x0)]
-        with Pool(2) as pool:
+        with Pool() as pool:
             res_t = pool.map(worker, jobs, chunksize=2)
             mc = pd.DataFrame(pool.map(worker, [(key, s, sigma, x0) for s in samples], chunksize=8))
         rows = [{"parameter": p, "label": label, "low": lo, "base": b0, "high": hi,
@@ -84,6 +84,5 @@ if __name__ == "__main__":
             "prob_net_positive": float((mc.net > 0).mean()),
             "prob_fraction_above_5pct": float((mc.fraction > 0.05).mean()),
             "prob_fraction_above_10pct": float((mc.fraction > 0.10).mean()),
-            "spearman": dict(sorted(rho.items(), key=lambda kv: -abs(kv[1]))),
-            "runtime_s": time.time() - t0})
+            "spearman": dict(sorted(rho.items(), key=lambda kv: -abs(kv[1])))})
     print("done in %.0f s" % (time.time() - t0))
