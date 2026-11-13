@@ -1,0 +1,82 @@
+{
+  "plant_life_years": 20,
+  "base_costs": {
+    "membrane_usd_m2": 10.0,
+    "membrane_share": 0.65,
+    "pretreat_usd_m3d": 400.0,
+    "membrane_life_y": 5.0,
+    "discount_rate": 0.07,
+    "om_share": 0.03,
+    "availability": 0.9
+  },
+  "ranges": {
+    "membrane_usd_m2": [
+      5.0,
+      30.0
+    ],
+    "membrane_share": [
+      0.5,
+      0.8
+    ],
+    "pretreat_usd_m3d": [
+      150.0,
+      1000.0
+    ],
+    "membrane_life_y": [
+      3.0,
+      7.0
+    ],
+    "discount_rate": [
+      0.04,
+      0.1
+    ],
+    "om_share": [
+      0.02,
+      0.04
+    ],
+    "availability": [
+      0.85,
+      0.95
+    ]
+  },
+  "comparison_usd_kWh": {
+    "al_dhafra_solar_2020": 0.0135,
+    "chung2017_ro_brine_wastewater": 0.44
+  },
+  "monte_carlo": {
+    "cta_compact": {
+      "lcoe": {
+        "p05": 0.9235854079903084,
+        "median": 1.926306511020226,
+        "p95": 7.25068594207975,
+        "prob_below_solar": 0.0,
+        "prob_below_0.10": 0.0
+      },
+      "lcoe_no_pretreatment_capital": {
+        "p05": 0.3259024755604051,
+        "median": 0.8929296066625505,
+        "p95": 4.5241106384363485,
+        "prob_below_solar": 0.0,
+        "prob_below_0.10": 0.0
+      },
+      "share_net_not_positive": 0.0175
+    },
+    "tfc_high_recovery": {
+      "lcoe": {
+        "p05": 0.9194360865120255,
+        "median": 1.8702914517416644,
+        "p95": 7.314186283614759,
+        "prob_below_solar": 0.0,
+        "prob_below_0.10": 0.0
+      },
+      "lcoe_no_pretreatment_capital": {
+        "p05": 0.2313821690676903,
+        "median": 0.5720378602326834,
+        "p95": 2.8267309796875013,
+        "prob_below_solar": 0.0,
+        "prob_below_0.10": 0.0
+      },
+      "share_net_not_positive": 0.0125
+    }
+  }
+}
