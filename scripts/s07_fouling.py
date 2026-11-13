@@ -12,7 +12,11 @@ pressure and feed ratio are re-optimised (the operator adapts), as in s04_uncert
 The levels are illustrative, not measured: no pilot data for PRO on Gulf effluent was found
 (bench forward-osmosis tests on treated wastewater show roughly 0-25 % flux decline).
 
-Writes results/fouling.csv and figures/fig11_fouling.png.
+A second part reruns the report's Monte Carlo (same 400 samples, same seed) with fouling
+severity drawn from FOULING_RANGE and costs drawn from s06_economics.COSTS (about 5 minutes).
+
+Writes results/fouling.csv, results/fouling_monte_carlo.csv, results/fouling_monte_carlo.json
+and figures/fig11_fouling.png.
 """
 import json
 import time
@@ -22,9 +26,11 @@ from multiprocessing import Pool
 import numpy as np
 import pandas as pd
 
-from common import BASE_SITE, BASE_MACH, BLUE, ORANGE, INK2, plt, savefig
+from common import BASE_SITE, BASE_MACH, BLUE, ORANGE, INK2, RANGES, SEED, build, plt, save_json, savefig
 from osmorec import CTA_HF, TFC_LAB, optimise, bulk_osmotic_difference, BAR
 from s06_economics import COSTS, lcoe
+
+FOULING_RANGE = (0.0, 0.15, 0.4)     # triangular (low, mode, high) for the combined Monte Carlo
 
 MEMBRANES = {"cta": CTA_HF, "tfc": TFC_LAB}
 LEVELS = [0.0, 0.1, 0.2, 0.3, 0.4]
@@ -38,6 +44,15 @@ def worker(args):
     d, b = optimise(BASE_SITE, mem, BASE_MACH, sigma, n_cells=60, x0=x0)
     return {"membrane": key, "design": name, "variant": variant, "fouling": f, "dP_bar": d.dP / BAR,
             "phi": d.phi, "net": b.net, "fraction": b.fraction_recovered, "area": b.area_per_product}
+
+
+def mc_worker(args):
+    """One Monte Carlo sample: the report's uncertain inputs plus fouling ("coating + support")."""
+    key, params, f, sigma, x0 = args
+    site, mem, mach = build(params, MEMBRANES[key])
+    d, b = optimise(site, VARIANTS["coating + support"](mem, f), mach, sigma, n_cells=60, x0=x0)
+    return {"fouling": f, "phi": d.phi, "net": b.net, "fraction": b.fraction_recovered, "area": b.area_per_product,
+            "recovery": site.recovery}
 
 
 if __name__ == "__main__":
@@ -77,7 +92,38 @@ if __name__ == "__main__":
              color=INK2, fontsize=8)
     savefig(fig, "fig11_fouling.png")
 
+    # Combined Monte Carlo: same physics samples as s04 (same seed), plus fouling and costs
+    n_mc = 400
+    summary, mc_parts = {}, []
+    for key, name in (("cta", "compact"), ("tfc", "high_recovery")):
+        r = designs[key][name]
+        x0 = (r["dP_bar"] * BAR / dpi, r["phi"])
+        rng = np.random.default_rng(SEED)
+        samples = [{p: float(rng.triangular(lo, b0, hi)) for p, (lo, b0, hi, _) in RANGES.items()} for _ in range(n_mc)]
+        f_s = np.random.default_rng(SEED + 7).triangular(*FOULING_RANGE, n_mc)
+        with Pool() as pool:
+            mc = pd.DataFrame(pool.map(mc_worker, [(key, s, float(f), r["sigma"], x0) for s, f in zip(samples, f_s)],
+                                       chunksize=8))
+        crng = np.random.default_rng(SEED + 8)
+        c = {p: crng.triangular(lo, b0, hi, n_mc) for p, (lo, b0, hi, _) in COSTS.items()}
+        bpp_s = (1 - mc.recovery) / mc.recovery
+        mc["lcoe"] = pd.Series(lcoe(mc.net, mc.area, mc.phi * bpp_s, c)["lcoe"]).fillna(np.inf)
+        mc["lcoe_no_pretreatment_capital"] = pd.Series(
+            lcoe(mc.net, mc.area, mc.phi * bpp_s, c, with_pretreatment=False)["lcoe"]).fillna(np.inf)
+        mc.insert(0, "design", name)
+        mc.insert(0, "membrane", key)
+        mc_parts.append(mc)
+        q = lambda col: {k: float(v) for k, v in zip(("p05", "median", "p95"), mc[col].quantile([0.05, 0.5, 0.95]))}
+        summary[f"{key}_{name}"] = {"fraction": q("fraction"), "lcoe": q("lcoe"),
+                                    "lcoe_no_pretreatment_capital": q("lcoe_no_pretreatment_capital"),
+                                    "prob_net_positive": float((mc.net > 0).mean()),
+                                    "prob_lcoe_below_0.10": float((mc.lcoe < 0.10).mean())}
+    pd.concat(mc_parts).to_csv("results/fouling_monte_carlo.csv", index=False)
+    save_json("fouling_monte_carlo.json", {"n": n_mc, "fouling_variant": "coating + support",
+                                           "fouling_triangular": FOULING_RANGE, "results": summary})
+
     pd.set_option("display.width", 200)
+    print(json.dumps(summary, indent=1))
     print(df[["membrane", "design", "variant", "fouling", "fraction", "share_of_clean", "lcoe_usd_kWh"]]
           .round(3).to_string(index=False))
     print("done in %.0f s" % (time.time() - t0))

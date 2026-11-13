@@ -3,7 +3,8 @@
 Extension to the report, not part of it: the report's numbers are energy only.
 Reads results/designs.json and the Monte Carlo files from s04_uncertainty.py; runs no
 new physics, so it takes seconds. Writes results/economics_designs.csv,
-results/economics_monte_carlo.csv and results/economics.json.
+results/economics_tornado.csv, results/economics_monte_carlo.csv, results/economics.json,
+figures/fig10_economics.png and figures/fig12_cost_tornado.png.
 
 Cost basis, per m3/day of desalinated product capacity:
     membrane capital  = area * membrane price / membrane share of PRO capital
@@ -88,6 +89,37 @@ if __name__ == "__main__":
                              r["net"], r["area_per_product"], base, SOLAR_USD_KWH))})
     dfd = pd.DataFrame(rows)
     dfd.to_csv("results/economics_designs.csv", index=False)
+
+    # Cost tornado: each cost input at its low and high value, the others at base
+    trows = []
+    for key, name in (("cta", "compact"), ("tfc", "high_recovery")):
+        r = designs[key][name]
+        args = (r["net"], r["area_per_product"], r["phi"] * bpp)
+        b0 = float(lcoe(*args, base)["lcoe"])
+        for p, (lo, _, hi, label) in COSTS.items():
+            v_lo, v_hi = (float(lcoe(*args, {**base, p: v})["lcoe"]) for v in (lo, hi))
+            trows.append({"membrane": key, "design": name, "parameter": p, "label": label, "low": lo, "high": hi,
+                          "lcoe_low": v_lo, "lcoe_high": v_hi, "lcoe_base": b0, "swing": abs(v_hi - v_lo)})
+    tor = pd.DataFrame(trows).sort_values(["membrane", "swing"], ascending=[True, False])
+    tor.to_csv("results/economics_tornado.csv", index=False)
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.6))
+    order = list(tor[tor.membrane == "cta"].parameter)[::-1]        # same rows in both panels
+    for ax, (key, name, title) in zip(axes, [("cta", "compact", "CTA compact"),
+                                             ("tfc", "high_recovery", "TFC high-recovery")]):
+        t = tor[(tor.membrane == key) & (tor.design == name)].set_index("parameter").loc[order].reset_index()
+        b0 = t.lcoe_base.iloc[0]
+        lo_v, hi_v = np.minimum(t.lcoe_low, t.lcoe_high), np.maximum(t.lcoe_low, t.lcoe_high)
+        ax.barh(t.label, lo_v - b0, left=b0, color=BLUE, height=0.6)
+        ax.barh(t.label, hi_v - b0, left=b0, color=ORANGE, height=0.6)
+        ax.axvline(b0, color=INK2, lw=1)
+        ax.set_title(f"{title}: US${b0:.2f}/kWh at base")
+        ax.set_xlabel("Cost of electricity (US$ per kWh)")
+        ax.grid(axis="y", visible=False)
+    axes[1].set_yticklabels([])
+    fig.text(0.01, -0.05, "Each bar: one cost input moved across its range, all others at base. "
+             "Blue: the cheaper end; orange: the dearer end.", color=INK2, fontsize=8)
+    savefig(fig, "fig12_cost_tornado.png")
 
     # Monte Carlo: physics samples from s04 paired with independently sampled costs
     rng = np.random.default_rng(SEED + 6)

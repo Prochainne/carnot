@@ -55,10 +55,26 @@ pretreatment cost. The CTA compact cost without pretreatment, US$0.44/kWh, match
 Chung et al. (2017) found for RO brine and wastewater. Recovering this energy is technically possible
 but far from paying for itself at today's membrane and pretreatment costs.
 
+The cost tornado (Figure 12) shows which cost input matters most: effluent pretreatment capital and
+membrane price, well ahead of discount rate, membrane life, O&M, availability and equipment share.
+Even the cheapest end of any single input leaves the cost above US$0.50/kWh.
+
 **Fouling (`s07_fouling.py`, Figure 11).** The report assumes clean membranes. Treated sewage can coat the
 membrane and clog its support layer; with the time-averaged fouling severity set from 0 to 40 %, the CTA
 compact design falls from 6.0 % to 3.4-3.6 % of plant electricity and the TFC high-recovery design from
 11.2 % to 8.0-9.7 %. The fouling levels are illustrative: no PRO pilot data on Gulf effluent was found.
+
+**Everything together (`s07_fouling.py`, `results/fouling_monte_carlo.json`).** The report's 400 Monte
+Carlo samples rerun with fouling added (severity 0-40 %, most likely 15 %, coating + support) and
+costs sampled as above:
+
+| Design | Plant electricity recovered: median (5th-95th) | US$ per kWh: median (5th-95th) |
+|---|---|---|
+| CTA compact | 2.9 % (0.1-6.0 %) | 2.4 (1.0-72) |
+| TFC high-recovery | 5.3 % (0.3-10.0 %) | 2.2 (1.0-28) |
+
+The very high upper costs are samples where the unit barely makes any net power. Net power is positive
+in 96 % of samples; no sample costs under US$0.10/kWh.
 
 ## Layout
 
@@ -74,8 +90,8 @@ compact design falls from 6.0 % to 3.4-3.6 % of plant electricity and the TFC hi
 | `scripts/s03_design.py` | Optimum design, waterfall, break-even, Abu Dhabi scenarios |
 | `scripts/s04_uncertainty.py` | Sensitivity, Monte Carlo, break-even map |
 | `scripts/s05_figures.py` | Draws Figures 0 and 4-9 from `results/` |
-| `scripts/s06_economics.py` | Extension: cost per kWh, with Monte Carlo (Figure 10) |
-| `scripts/s07_fouling.py` | Extension: fouled-membrane scenario (Figure 11) |
+| `scripts/s06_economics.py` | Extension: cost per kWh, cost tornado, Monte Carlo (Figures 10, 12) |
+| `scripts/s07_fouling.py` | Extension: fouled membranes, and a Monte Carlo with fouling and costs together (Figure 11) |
 | `tests/` | 26 automated checks (`python -m pytest tests`), also run on GitHub for every push |
 | `data/` | Published data used, with `SOURCES.md` |
 | `results/`, `figures/` | Outputs of the last full run |
