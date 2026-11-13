@@ -1,7 +1,8 @@
 # Osmotic energy recovery from desalination brine in the Gulf
 
-Carnot 2026 submission. Model, data, tests and scripts behind the report
+Carnot 2026 submission by team Finners. Model, data, tests and scripts behind the report
 "How much of a Gulf desalination plant's electricity can osmotic energy recovery give back?"
+([PDF](report/gulf_osmotic_energy_recovery_report.pdf)).
 
 ## Reproduce everything
 
@@ -95,6 +96,7 @@ in 96 % of samples; no sample costs under US$0.10/kWh.
 | `tests/` | 26 automated checks (`python -m pytest tests`), also run on GitHub for every push |
 | `data/` | Published data used, with `SOURCES.md` |
 | `results/`, `figures/` | Outputs of the last full run |
+| `report/` | The submitted report (PDF) |
 
 ## Units
 
